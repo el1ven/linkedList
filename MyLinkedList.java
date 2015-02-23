@@ -1,7 +1,7 @@
 public class MyLinkedList {
     
-    private Node head;//头指针
-    private int listCount;//长度计算
+    private Node head;
+    private int listCount;
     
     public MyLinkedList(){
         head = new Node(null);
@@ -69,7 +69,27 @@ public class MyLinkedList {
         return output;
     }
     
-    private class Node{//节点类
+    public boolean isCircle(){//判断单链表是否成环
+        Node oneStep, twoStep;//采用追击方法，如果有环出现的话，快的一定会追上慢的
+        if(head == null || head.getNext() == null) {
+            return false;//链表本身为空或者只有一个根本不能成环
+        }
+        oneStep = head;
+        twoStep = head;
+        while(true){
+            if(twoStep == null || twoStep.getNext() == null){
+                return false;
+            }else if((oneStep == twoStep && oneStep != head) || twoStep.getNext() == oneStep){
+                //快的直接追过慢的就证明链表有环
+                return true;
+            }else{
+                oneStep = oneStep.getNext();//一步
+                twoStep = twoStep.getNext().getNext();//两步
+            }
+        }
+    }
+    
+    private class Node{
         
         Node next;//指针域
         Object data;//数据域
@@ -102,4 +122,3 @@ public class MyLinkedList {
     }
     
 }
-

@@ -4,7 +4,7 @@ public class Test {
         MyLinkedList list = new MyLinkedList();
         
         //填充数据
-        for(int i = 1; i <= 8; i++){
+        for(int i = 1; i <= 10; i++){
             list.add(String.valueOf(i));
         }
         
@@ -16,5 +16,9 @@ public class Test {
         System.out.println("get 3rd element: " + list.getDataByIndex(3));
         System.out.println("print linkedlist size: " + list.getSize());
         System.out.println("print linkedlist: " + list);
+        System.out.println("");
+        System.out.println("测试单链表是否有环："+list.isCircle());
+        
     }
 }
+
